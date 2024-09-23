@@ -1,0 +1,3010 @@
+{
+  "openai": {
+    "complete": {
+      "model": {
+        "required": true,
+        "default": "text-davinci-003"
+      },
+      "prompt": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      },
+      "echo": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "best_of": {
+        "required": false,
+        "default": null
+      },
+      "logit_bias": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      },
+      "seed": {
+        "required": false,
+        "default": null
+      },
+      "suffix": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "model": {
+        "required": true,
+        "default": "text-embedding-ada-002"
+      },
+      "input": {
+        "required": true,
+        "default": null
+      },
+      "encoding_format": {
+        "required": false,
+        "default": null
+      },
+      "dimensions": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "gpt-3.5-turbo"
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "functions": {
+        "required": false,
+        "default": null
+      },
+      "function_call": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "logit_bias": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      },
+      "seed": {
+        "required": false,
+        "default": null
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "tool_choice": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      },
+      "top_logprobs": {
+        "required": false,
+        "default": null
+      },
+      "stream_options": {
+        "required": false,
+        "default": null
+      },
+      "service_tier": {
+        "required": false,
+        "default": null
+      },
+      "parallel_tool_calls": {
+        "required": false,
+        "default": null
+      },
+      "max_completion_tokens": {
+        "required": false,
+        "default": null
+      }
+    },
+    "imageGenerate": {
+      "prompt": {
+        "required": true,
+        "default": null
+      },
+      "model": {
+        "required": true,
+        "default": "dall-e-2"
+      },
+      "n": {
+        "required": false,
+        "default": null
+      },
+      "quality": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      },
+      "size": {
+        "required": false,
+        "default": null
+      },
+      "style": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    },
+    "createSpeech": {
+      "model": {
+        "required": true,
+        "default": "tts-1"
+      },
+      "input": {
+        "required": true,
+        "default": null
+      },
+      "voice": {
+        "required": true,
+        "default": "alloy"
+      },
+      "response_format": {
+        "required": false,
+        "default": "mp3"
+      },
+      "speed": {
+        "required": false,
+        "default": 1
+      }
+    },
+    "createTranscription": {},
+    "createTranslation": {}
+  },
+  "cohere": {
+    "complete": {
+      "model": {
+        "required": true,
+        "default": "command"
+      },
+      "prompt": {
+        "required": true,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 20
+      },
+      "temperature": {
+        "required": false,
+        "default": 0.75
+      },
+      "p": {
+        "required": false,
+        "default": 0.75
+      },
+      "k": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "logit_bias": {
+        "required": false,
+        "default": null
+      },
+      "num_generations": {
+        "required": false,
+        "default": 1
+      },
+      "end_sequences": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "command"
+      },
+      "message": {
+        "required": true,
+        "default": null
+      },
+      "chat_history": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 20
+      },
+      "temperature": {
+        "required": false,
+        "default": 0.75
+      },
+      "p": {
+        "required": false,
+        "default": 0.75
+      },
+      "k": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "end_sequences": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "texts": {
+        "required": true,
+        "default": null
+      },
+      "model": {
+        "required": false,
+        "default": "embed-english-light-v2.0"
+      },
+      "input_type": {
+        "required": false,
+        "default": null
+      },
+      "embedding_types": {
+        "required": false,
+        "default": null
+      },
+      "truncate": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "anthropic": {
+    "complete": {
+      "model": {
+        "required": true,
+        "default": "claude-instant-1"
+      },
+      "prompt": {
+        "required": true,
+        "default": null
+      },
+      "max_tokens_to_sample": {
+        "required": true,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": -1
+      },
+      "top_k": {
+        "required": false,
+        "default": -1
+      },
+      "stop_sequences": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "metadata.user_id": {
+        "required": false,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "claude-2.1"
+      },
+      "messages": {
+        "required": true,
+        "default": null
+      },
+      "system": {
+        "required": false,
+        "default": null
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "tool_choice": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": true,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": -1
+      },
+      "top_k": {
+        "required": false,
+        "default": -1
+      },
+      "stop_sequences": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "metadata.user_id": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "azure-openai": {
+    "complete": {
+      "model": {
+        "required": false,
+        "default": null
+      },
+      "prompt": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      },
+      "echo": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "best_of": {
+        "required": false,
+        "default": null
+      },
+      "logit_bias": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "model": {
+        "required": false,
+        "default": null
+      },
+      "input": {
+        "required": true,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    },
+    "imageGenerate": {
+      "prompt": {
+        "required": true,
+        "default": null
+      },
+      "model": {
+        "required": true,
+        "default": "dall-e-3"
+      },
+      "n": {
+        "required": false,
+        "default": null
+      },
+      "quality": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      },
+      "size": {
+        "required": false,
+        "default": null
+      },
+      "style": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "model": {
+        "required": false,
+        "default": null
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "functions": {
+        "required": false,
+        "default": null
+      },
+      "function_call": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "logit_bias": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "tool_choice": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      }
+    },
+    "createSpeech": {
+      "model": {
+        "required": true,
+        "default": "tts-1"
+      },
+      "input": {
+        "required": true,
+        "default": null
+      },
+      "voice": {
+        "required": true,
+        "default": "alloy"
+      },
+      "response_format": {
+        "required": false,
+        "default": "mp3"
+      },
+      "speed": {
+        "required": false,
+        "default": 1
+      }
+    },
+    "createTranscription": {},
+    "createTranslation": {}
+  },
+  "huggingface": {
+    "complete": {
+      "model": {
+        "required": false,
+        "default": null
+      },
+      "prompt": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      },
+      "echo": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "best_of": {
+        "required": false,
+        "default": null
+      },
+      "logit_bias": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "model": {
+        "required": false,
+        "default": null
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "functions": {
+        "required": false,
+        "default": null
+      },
+      "function_call": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "logit_bias": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "tool_choice": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "anyscale": {
+    "complete": {
+      "model": {
+        "required": true,
+        "default": "Meta-Llama/Llama-Guard-7b"
+      },
+      "prompt": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      },
+      "echo": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "best_of": {
+        "required": false,
+        "default": null
+      },
+      "logit_bias": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "meta-llama/Llama-2-7b-chat-hf"
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "functions": {
+        "required": false,
+        "default": null
+      },
+      "function_call": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "logit_bias": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "tool_choice": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      },
+      "top_logprobs": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "model": {
+        "required": true,
+        "default": "thenlper/gte-large"
+      },
+      "input": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "palm": {
+    "complete": {
+      "model": {
+        "required": true,
+        "default": "model/text-bison-001"
+      },
+      "prompt": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "topP": {
+        "required": false,
+        "default": 1
+      },
+      "topK": {
+        "required": false,
+        "default": 1
+      },
+      "candidateCount": {
+        "required": false,
+        "default": 1
+      },
+      "maxOutputTokens": {
+        "required": false,
+        "default": 100
+      },
+      "stopSequences": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "text": {
+        "required": true,
+        "default": null
+      },
+      "model": {
+        "required": false,
+        "default": "models/embedding-gecko-001"
+      }
+    },
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "model/chat-bison-001"
+      },
+      "prompt": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "topP": {
+        "required": false,
+        "default": 1
+      },
+      "topK": {
+        "required": false,
+        "default": 1
+      },
+      "candidateCount": {
+        "required": false,
+        "default": 1
+      },
+      "maxOutputTokens": {
+        "required": false,
+        "default": 100
+      },
+      "stopSequences": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "together-ai": {
+    "complete": {
+      "model": {
+        "required": true,
+        "default": "togethercomputer/RedPajama-INCITE-7B-Instruct"
+      },
+      "prompt": {
+        "required": true,
+        "default": null
+      },
+      "max_tokens": {
+        "required": true,
+        "default": 128
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": null
+      },
+      "top_p": {
+        "required": false,
+        "default": null
+      },
+      "top_k": {
+        "required": false,
+        "default": null
+      },
+      "repetition_penalty": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "togethercomputer/RedPajama-INCITE-Chat-3B-v1"
+      },
+      "messages": {
+        "required": true,
+        "default": null
+      },
+      "max_tokens": {
+        "required": true,
+        "default": 128
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": null
+      },
+      "top_p": {
+        "required": false,
+        "default": null
+      },
+      "top_k": {
+        "required": false,
+        "default": null
+      },
+      "repetition_penalty": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "tool_choice": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "model": {
+        "required": true,
+        "default": "mistral-embed"
+      },
+      "input": {
+        "required": true,
+        "default": null
+      }
+    }
+  },
+  "google": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "gemini-pro"
+      },
+      "contents": {
+        "required": false,
+        "default": null
+      },
+      "systemInstruction": {
+        "required": false,
+        "default": null
+      },
+      "generationConfig": {
+        "required": false,
+        "default": null
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "tool_config": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "content": {
+        "required": true,
+        "default": null
+      },
+      "model": {
+        "required": true,
+        "default": "embedding-001"
+      }
+    }
+  },
+  "vertex-ai": {
+    "getConfig": {}
+  },
+  "perplexity-ai": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "mistral-7b-instruct"
+      },
+      "messages": {
+        "required": true,
+        "default": []
+      },
+      "max_tokens": {
+        "required": true,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": null
+      },
+      "top_p": {
+        "required": false,
+        "default": null
+      },
+      "top_k": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "repetition_penalty": {
+        "required": false,
+        "default": null
+      },
+      "n": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "mistral-ai": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "mistral-tiny"
+      },
+      "messages": {
+        "required": false,
+        "default": []
+      },
+      "temperature": {
+        "required": false,
+        "default": 0.7
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "max_tokens": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "random_seed": {
+        "required": false,
+        "default": null
+      },
+      "safe_prompt": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "model": {
+        "required": true,
+        "default": "mistral-embed"
+      },
+      "input": {
+        "required": true,
+        "default": null
+      }
+    }
+  },
+  "deepinfra": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "deepinfra/airoboros-70b"
+      },
+      "messages": {
+        "required": true,
+        "default": []
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "stability-ai": {
+    "imageGenerate": {
+      "text_prompts": {
+        "required": true,
+        "default": null
+      },
+      "samples": {
+        "required": false,
+        "default": null
+      },
+      "height": {
+        "required": false,
+        "default": null
+      },
+      "width": {
+        "required": false,
+        "default": null
+      },
+      "style_preset": {
+        "required": false,
+        "default": null
+      },
+      "cfg_scale": {
+        "required": false,
+        "default": null
+      },
+      "clip_guidance_preset": {
+        "required": false,
+        "default": null
+      },
+      "sampler": {
+        "required": false,
+        "default": null
+      },
+      "seed": {
+        "required": false,
+        "default": null
+      },
+      "steps": {
+        "required": false,
+        "default": null
+      },
+      "extras": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "nomic": {
+    "embed": {
+      "model": {
+        "required": true,
+        "default": "nomic-embed-text-v1"
+      },
+      "texts": {
+        "required": true,
+        "default": null
+      },
+      "task_type": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "ollama": {
+    "embed": {
+      "model": {
+        "required": false,
+        "default": null
+      },
+      "prompt": {
+        "required": true,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "llama2"
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      },
+      "seed": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      }
+    }
+  },
+  "ai21": {
+    "complete": {
+      "prompt": {
+        "required": true,
+        "default": null
+      },
+      "numResults": {
+        "required": false,
+        "default": 1
+      },
+      "maxTokens": {
+        "required": false,
+        "default": 16
+      },
+      "minTokens": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": 0.7
+      },
+      "topP": {
+        "required": false,
+        "default": 1
+      },
+      "topKReturn": {
+        "required": false,
+        "default": null
+      },
+      "stopSequences": {
+        "required": false,
+        "default": null
+      },
+      "presencePenalty": {
+        "required": false,
+        "default": null
+      },
+      "frequencyPenalty": {
+        "required": false,
+        "default": null
+      },
+      "countPenalty": {
+        "required": false,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "messages": {
+        "required": true,
+        "default": null
+      },
+      "system": {
+        "required": false,
+        "default": null
+      },
+      "numResults": {
+        "required": false,
+        "default": 1
+      },
+      "maxTokens": {
+        "required": false,
+        "default": 16
+      },
+      "minTokens": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": 0.7
+      },
+      "topP": {
+        "required": false,
+        "default": 1
+      },
+      "topKReturn": {
+        "required": false,
+        "default": null
+      },
+      "stopSequences": {
+        "required": false,
+        "default": null
+      },
+      "presencePenalty": {
+        "required": false,
+        "default": null
+      },
+      "frequencyPenalty": {
+        "required": false,
+        "default": null
+      },
+      "countPenalty": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "texts": {
+        "required": true,
+        "default": null
+      },
+      "type": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "bedrock": {
+    "getConfig": {}
+  },
+  "groq": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "mixtral-8x7b-32768"
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      }
+    }
+  },
+  "segmind": {
+    "imageGenerate": {
+      "prompt": {
+        "required": true,
+        "default": null
+      },
+      "samples": {
+        "required": false,
+        "default": 1
+      },
+      "img_height": {
+        "required": false,
+        "default": null
+      },
+      "img_width": {
+        "required": false,
+        "default": null
+      },
+      "style": {
+        "required": false,
+        "default": "base"
+      },
+      "num_inference_steps": {
+        "required": true,
+        "default": 20
+      },
+      "negative_prompt": {
+        "required": false,
+        "default": "out of frame, duplicate, watermark, signature, text, error, deformed"
+      },
+      "scheduler": {
+        "required": false,
+        "default": "UniPC"
+      },
+      "guidance_scale": {
+        "required": false,
+        "default": 7.5
+      },
+      "seed": {
+        "required": false,
+        "default": 644107912
+      },
+      "strength": {
+        "required": false,
+        "default": 0.75
+      },
+      "refiner": {
+        "required": false,
+        "default": true
+      },
+      "high_noise_fraction": {
+        "required": false,
+        "default": 0.8
+      },
+      "base64": {
+        "required": true,
+        "default": true
+      },
+      "control_scale": {
+        "required": false,
+        "default": 1.8
+      },
+      "control_start": {
+        "required": false,
+        "default": 0.19
+      },
+      "control_end": {
+        "required": false,
+        "default": 1
+      },
+      "qr_text": {
+        "required": false,
+        "default": "https://portkey.ai"
+      },
+      "invert": {
+        "required": false,
+        "default": null
+      },
+      "size": {
+        "required": false,
+        "default": 768
+      }
+    }
+  },
+  "jina": {
+    "embed": {
+      "model": {
+        "required": true,
+        "default": "jina-embeddings-v2-base-en"
+      },
+      "input": {
+        "required": false,
+        "default": null
+      },
+      "encoding_format": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "fireworks-ai": {
+    "complete": {
+      "model": {
+        "required": true,
+        "default": null
+      },
+      "prompt": {
+        "required": true,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 16
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      },
+      "echo": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "top_k": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "context_length_exceeded_behavior": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": null
+      },
+      "messages": {
+        "required": true,
+        "default": []
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 200
+      },
+      "prompt_truncate_len": {
+        "required": false,
+        "default": 1500
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "top_k": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "context_length_exceeded_behavior": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "model": {
+        "required": true,
+        "default": "nomic-ai/nomic-embed-text-v1.5"
+      },
+      "input": {
+        "required": true,
+        "default": null
+      },
+      "dimensions": {
+        "required": false,
+        "default": null
+      }
+    },
+    "imageGenerate": {
+      "text_prompts": {
+        "required": true,
+        "default": null
+      },
+      "model": {
+        "required": true,
+        "default": "stable-diffusion-xl-1024-v1-0"
+      },
+      "height": {
+        "required": false,
+        "default": 1024
+      },
+      "width": {
+        "required": false,
+        "default": 1024
+      },
+      "cfg_scale": {
+        "required": false,
+        "default": 7
+      },
+      "sampler": {
+        "required": false,
+        "default": null
+      },
+      "samples": {
+        "required": false,
+        "default": 1
+      },
+      "seed": {
+        "required": false,
+        "default": null
+      },
+      "steps": {
+        "required": false,
+        "default": 50
+      },
+      "safety_check": {
+        "required": false,
+        "default": null
+      },
+      "lora_adapter_name": {
+        "required": false,
+        "default": null
+      },
+      "lora_weight_filename": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "workers-ai": {
+    "complete": {
+      "prompt": {
+        "required": true,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "raw": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "raw": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "text": {
+        "required": true,
+        "default": null
+      }
+    }
+  },
+  "reka-ai": {
+    "chatComplete": {
+      "model_name": {
+        "required": true,
+        "default": "reka-flash"
+      },
+      "conversation_history": {
+        "required": false,
+        "default": null
+      },
+      "request_output_len": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": null
+      },
+      "runtime_top_p": {
+        "required": false,
+        "default": null
+      },
+      "stop_words": {
+        "required": false,
+        "default": null
+      },
+      "random_seed": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "runtime_top_k": {
+        "required": false,
+        "default": null
+      },
+      "length_penalty": {
+        "required": false,
+        "default": null
+      },
+      "retrieval_dataset": {
+        "required": false,
+        "default": null
+      },
+      "use_search_engine": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "moonshot": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "moonshot-v1-8k"
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "openrouter": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "openrouter/auto"
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "lingyi": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "yi-34b-chat-0205"
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "zhipu": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "glm-3-turbo"
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "model": {
+        "required": true,
+        "default": "embedding-2"
+      },
+      "input": {
+        "required": true,
+        "default": null
+      }
+    }
+  },
+  "novita-ai": {
+    "complete": {
+      "model": {
+        "required": true,
+        "default": "lzlv_70b"
+      },
+      "prompt": {
+        "required": true,
+        "default": null
+      },
+      "max_tokens": {
+        "required": true,
+        "default": 128
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": null
+      },
+      "top_p": {
+        "required": false,
+        "default": null
+      },
+      "top_k": {
+        "required": false,
+        "default": null
+      },
+      "repetition_penalty": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "lzlv_70b"
+      },
+      "messages": {
+        "required": true,
+        "default": null
+      },
+      "max_tokens": {
+        "required": true,
+        "default": 128
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": null
+      },
+      "top_p": {
+        "required": false,
+        "default": null
+      },
+      "n": {
+        "required": false,
+        "default": null
+      },
+      "top_k": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "tool_choice": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "monsterapi": {
+    "chatComplete": {
+      "top_k": {
+        "required": false,
+        "default": null
+      },
+      "top_p": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": null
+      },
+      "max_length": {
+        "required": false,
+        "default": null
+      },
+      "repetition_penalty": {
+        "required": false,
+        "default": null
+      },
+      "beam_size": {
+        "required": false,
+        "default": null
+      },
+      "model": {
+        "required": true,
+        "default": "mistralai/Mistral-7B-Instruct-v0.2"
+      },
+      "messages": {
+        "required": true,
+        "default": []
+      }
+    }
+  },
+  "deepseek": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "deepseek-chat"
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      },
+      "top_logprobs": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "predibase": {
+    "chatComplete": {
+      "model": {
+        "required": false,
+        "default": null
+      },
+      "messages": {
+        "required": true,
+        "default": []
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 4096
+      },
+      "temperature": {
+        "required": false,
+        "default": 0.1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "top_k": {
+        "required": false,
+        "default": -1
+      },
+      "best_of": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "triton": {
+    "complete": {
+      "text_input": {
+        "required": true,
+        "default": null
+      },
+      "max_tokens": {
+        "required": true,
+        "default": 100
+      },
+      "temperature": {
+        "required": true,
+        "default": 0.7
+      },
+      "top_p": {
+        "required": true,
+        "default": 0.7
+      },
+      "top_k": {
+        "required": true,
+        "default": 50
+      },
+      "stop_words": {
+        "required": false,
+        "default": null
+      },
+      "bad_words": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "voyage": {
+    "embed": {
+      "model": {
+        "required": true,
+        "default": null
+      },
+      "input": {
+        "required": true,
+        "default": null
+      },
+      "input_type": {
+        "required": false,
+        "default": null
+      },
+      "truncation": {
+        "required": false,
+        "default": true
+      },
+      "encoding_format": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "azure-ai": {
+    "complete": {
+      "model": {
+        "required": false,
+        "default": null
+      },
+      "prompt": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "model": {
+        "required": false,
+        "default": null
+      },
+      "input": {
+        "required": true,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "model": {
+        "required": false,
+        "default": null
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "tool_choice": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "github": {
+    "complete": {
+      "model": {
+        "required": false,
+        "default": null
+      },
+      "prompt": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "model": {
+        "required": false,
+        "default": null
+      },
+      "input": {
+        "required": true,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "model": {
+        "required": false,
+        "default": null
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "tool_choice": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "deepbricks": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "gpt-3.5-turbo"
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "functions": {
+        "required": false,
+        "default": null
+      },
+      "function_call": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "logit_bias": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      },
+      "seed": {
+        "required": false,
+        "default": null
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "tool_choice": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      },
+      "top_logprobs": {
+        "required": false,
+        "default": null
+      },
+      "stream_options": {
+        "required": false,
+        "default": null
+      }
+    },
+    "imageGenerate": {
+      "prompt": {
+        "required": true,
+        "default": null
+      },
+      "model": {
+        "required": true,
+        "default": "dall-e-2"
+      },
+      "n": {
+        "required": false,
+        "default": null
+      },
+      "quality": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      },
+      "size": {
+        "required": false,
+        "default": null
+      },
+      "style": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "siliconflow": {
+    "embed": {
+      "model": {
+        "required": true,
+        "default": "BAAI/bge-large-zh-v1.5"
+      },
+      "input": {
+        "required": true,
+        "default": null
+      },
+      "encoding_format": {
+        "required": false,
+        "default": null
+      }
+    },
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "deepseek-ai/DeepSeek-V2-Chat"
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": 100
+      },
+      "temperature": {
+        "required": false,
+        "default": 1
+      },
+      "top_p": {
+        "required": false,
+        "default": 1
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "stop": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      }
+    },
+    "imageGenerate": {
+      "prompt": {
+        "required": true,
+        "default": null
+      },
+      "image_size": {
+        "required": false,
+        "default": null
+      },
+      "num_inference_steps": {
+        "required": false,
+        "default": 20
+      },
+      "batch_size": {
+        "required": false,
+        "default": 1
+      },
+      "guidance_scale": {
+        "required": false,
+        "default": 7.5
+      }
+    }
+  },
+  "cerebras": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": null
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "functions": {
+        "required": false,
+        "default": null
+      },
+      "function_call": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": null
+      },
+      "top_p": {
+        "required": false,
+        "default": null
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      },
+      "seed": {
+        "required": false,
+        "default": null
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "tool_choice": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      },
+      "stream_options": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "inference-net": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "llama3"
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "functions": {
+        "required": false,
+        "default": null
+      },
+      "function_call": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": null
+      },
+      "top_p": {
+        "required": false,
+        "default": null
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "logit_bias": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      },
+      "seed": {
+        "required": false,
+        "default": null
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "tool_choice": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      },
+      "stream_options": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "sambanova": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "Meta-Llama-3.1-8B-Instruct"
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": null
+      },
+      "top_p": {
+        "required": false,
+        "default": null
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "stream_options": {
+        "required": false,
+        "default": null
+      }
+    }
+  }
+}
