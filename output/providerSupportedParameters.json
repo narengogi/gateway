@@ -591,6 +591,10 @@
         "required": false,
         "default": 100
       },
+      "max_completion_tokens": {
+        "required": false,
+        "default": 100
+      },
       "temperature": {
         "required": false,
         "default": 1
@@ -602,6 +606,14 @@
       "n": {
         "required": false,
         "default": 1
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      },
+      "top_logprobs": {
+        "required": false,
+        "default": null
       },
       "stream": {
         "required": false,
@@ -1081,7 +1093,7 @@
     "chatComplete": {
       "model": {
         "required": true,
-        "default": "togethercomputer/RedPajama-INCITE-Chat-3B-v1"
+        "default": "meta-llama/Llama-3.2-11B-Vision-Instruct-Turbo"
       },
       "messages": {
         "required": true,
@@ -1147,7 +1159,7 @@
     "chatComplete": {
       "model": {
         "required": true,
-        "default": "gemini-pro"
+        "default": "gemini-1.5-pro"
       },
       "contents": {
         "required": false,
@@ -1259,6 +1271,14 @@
         "default": null
       },
       "safe_prompt": {
+        "required": false,
+        "default": null
+      },
+      "prompt": {
+        "required": false,
+        "default": null
+      },
+      "suffix": {
         "required": false,
         "default": null
       }
@@ -1627,7 +1647,7 @@
       },
       "seed": {
         "required": false,
-        "default": 644107912
+        "default": 697689441
       },
       "strength": {
         "required": false,
@@ -1757,7 +1777,7 @@
     "chatComplete": {
       "model": {
         "required": true,
-        "default": null
+        "default": "accounts/fireworks/models/llama-v3p1-405b-instruct"
       },
       "messages": {
         "required": true,
@@ -3002,6 +3022,108 @@
         "default": null
       },
       "stream_options": {
+        "required": false,
+        "default": null
+      }
+    }
+  },
+  "upstage": {
+    "chatComplete": {
+      "model": {
+        "required": true,
+        "default": "solar-pro"
+      },
+      "messages": {
+        "required": false,
+        "default": null
+      },
+      "functions": {
+        "required": false,
+        "default": null
+      },
+      "function_call": {
+        "required": false,
+        "default": null
+      },
+      "max_tokens": {
+        "required": false,
+        "default": null
+      },
+      "temperature": {
+        "required": false,
+        "default": null
+      },
+      "top_p": {
+        "required": false,
+        "default": null
+      },
+      "n": {
+        "required": false,
+        "default": 1
+      },
+      "stream": {
+        "required": false,
+        "default": null
+      },
+      "presence_penalty": {
+        "required": false,
+        "default": null
+      },
+      "frequency_penalty": {
+        "required": false,
+        "default": null
+      },
+      "logit_bias": {
+        "required": false,
+        "default": null
+      },
+      "user": {
+        "required": false,
+        "default": null
+      },
+      "seed": {
+        "required": false,
+        "default": null
+      },
+      "tools": {
+        "required": false,
+        "default": null
+      },
+      "tool_choice": {
+        "required": false,
+        "default": null
+      },
+      "response_format": {
+        "required": false,
+        "default": null
+      },
+      "logprobs": {
+        "required": false,
+        "default": null
+      },
+      "stream_options": {
+        "required": false,
+        "default": null
+      }
+    },
+    "embed": {
+      "model": {
+        "required": true,
+        "default": "solar-embedding-1-large-query"
+      },
+      "input": {
+        "required": true,
+        "default": null
+      },
+      "encoding_format": {
+        "required": false,
+        "default": null
+      },
+      "dimensions": {
+        "required": false,
+        "default": null
+      },
+      "user": {
         "required": false,
         "default": null
       }

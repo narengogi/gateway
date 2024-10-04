@@ -1,0 +1,902 @@
+{
+  "openai": {
+    "complete": [
+      "model",
+      "prompt",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "n",
+      "stream",
+      "logprobs",
+      "echo",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "best_of",
+      "logit_bias",
+      "user",
+      "seed",
+      "suffix"
+    ],
+    "embed": ["model", "input", "encoding_format", "dimensions", "user"],
+    "chatComplete": [
+      "model",
+      "messages",
+      "functions",
+      "function_call",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "n",
+      "stream",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "logit_bias",
+      "user",
+      "seed",
+      "tools",
+      "tool_choice",
+      "response_format",
+      "logprobs",
+      "top_logprobs",
+      "stream_options",
+      "service_tier",
+      "parallel_tool_calls",
+      "max_completion_tokens"
+    ],
+    "imageGenerate": [
+      "prompt",
+      "model",
+      "n",
+      "quality",
+      "response_format",
+      "size",
+      "style",
+      "user"
+    ],
+    "createSpeech": ["model", "input", "voice", "response_format", "speed"],
+    "createTranscription": [],
+    "createTranslation": []
+  },
+  "cohere": {
+    "complete": [
+      "model",
+      "prompt",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "top_k",
+      "frequency_penalty",
+      "presence_penalty",
+      "logit_bias",
+      "n",
+      "stop",
+      "stream"
+    ],
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "top_k",
+      "frequency_penalty",
+      "presence_penalty",
+      "stop",
+      "stream"
+    ],
+    "embed": ["input", "model", "input_type", "embedding_types", "truncate"]
+  },
+  "anthropic": {
+    "complete": [
+      "model",
+      "prompt",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "top_k",
+      "stop",
+      "stream",
+      "user"
+    ],
+    "chatComplete": [
+      "model",
+      "messages",
+      "tools",
+      "tool_choice",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "top_k",
+      "stop",
+      "stream",
+      "user"
+    ]
+  },
+  "azure-openai": {
+    "complete": [
+      "model",
+      "prompt",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "n",
+      "stream",
+      "logprobs",
+      "echo",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "best_of",
+      "logit_bias",
+      "user"
+    ],
+    "embed": ["model", "input", "user"],
+    "imageGenerate": [
+      "prompt",
+      "model",
+      "n",
+      "quality",
+      "response_format",
+      "size",
+      "style",
+      "user"
+    ],
+    "chatComplete": [
+      "model",
+      "messages",
+      "functions",
+      "function_call",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "n",
+      "logprobs",
+      "top_logprobs",
+      "stream",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "logit_bias",
+      "user",
+      "tools",
+      "tool_choice",
+      "response_format"
+    ],
+    "createSpeech": ["model", "input", "voice", "response_format", "speed"],
+    "createTranscription": [],
+    "createTranslation": []
+  },
+  "huggingface": {
+    "complete": [
+      "model",
+      "prompt",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "n",
+      "stream",
+      "logprobs",
+      "echo",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "best_of",
+      "logit_bias",
+      "user"
+    ],
+    "chatComplete": [
+      "model",
+      "messages",
+      "functions",
+      "function_call",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "n",
+      "stream",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "logit_bias",
+      "user",
+      "tools",
+      "tool_choice",
+      "response_format"
+    ]
+  },
+  "anyscale": {
+    "complete": [
+      "model",
+      "prompt",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "n",
+      "stream",
+      "logprobs",
+      "echo",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "best_of",
+      "logit_bias",
+      "user"
+    ],
+    "chatComplete": [
+      "model",
+      "messages",
+      "functions",
+      "function_call",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "n",
+      "stream",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "logit_bias",
+      "user",
+      "tools",
+      "tool_choice",
+      "response_format",
+      "logprobs",
+      "top_logprobs"
+    ],
+    "embed": ["model", "input", "user"]
+  },
+  "palm": {
+    "complete": [
+      "model",
+      "prompt",
+      "temperature",
+      "top_p",
+      "top_k",
+      "n",
+      "max_tokens",
+      "stop"
+    ],
+    "embed": ["input", "model"],
+    "chatComplete": [
+      "model",
+      "messages",
+      "temperature",
+      "top_p",
+      "top_k",
+      "n",
+      "max_tokens",
+      "max_completion_tokens",
+      "stop"
+    ]
+  },
+  "together-ai": {
+    "complete": [
+      "model",
+      "prompt",
+      "max_tokens",
+      "stop",
+      "temperature",
+      "top_p",
+      "top_k",
+      "frequency_penalty",
+      "stream",
+      "logprobs"
+    ],
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "max_completion_tokens",
+      "stop",
+      "temperature",
+      "top_p",
+      "top_k",
+      "frequency_penalty",
+      "stream",
+      "logprobs",
+      "tools",
+      "tool_choice",
+      "response_format"
+    ],
+    "embed": ["model", "input"]
+  },
+  "google": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "temperature",
+      "top_p",
+      "top_k",
+      "max_tokens",
+      "max_completion_tokens",
+      "stop",
+      "response_format",
+      "tools",
+      "tool_choice"
+    ],
+    "embed": ["input", "model"]
+  },
+  "vertex-ai": {
+    "getConfig": []
+  },
+  "perplexity-ai": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "top_k",
+      "stream",
+      "presence_penalty",
+      "frequency_penalty",
+      "n"
+    ]
+  },
+  "mistral-ai": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "temperature",
+      "top_p",
+      "max_tokens",
+      "max_completion_tokens",
+      "stream",
+      "seed",
+      "safe_prompt",
+      "safe_mode",
+      "prompt",
+      "suffix"
+    ],
+    "embed": ["model", "input"]
+  },
+  "deepinfra": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "frequency_penalty",
+      "max_tokens",
+      "max_completion_tokens",
+      "n",
+      "presence_penalty",
+      "temperature",
+      "top_p",
+      "stop",
+      "stream"
+    ]
+  },
+  "stability-ai": {
+    "imageGenerate": [
+      "prompt",
+      "n",
+      "size",
+      "style",
+      "cfg_scale",
+      "clip_guidance_preset",
+      "sampler",
+      "seed",
+      "steps",
+      "extras"
+    ]
+  },
+  "nomic": {
+    "embed": ["model", "input", "task_type"]
+  },
+  "ollama": {
+    "embed": ["model", "input"],
+    "chatComplete": [
+      "model",
+      "messages",
+      "frequency_penalty",
+      "presence_penalty",
+      "response_format",
+      "seed",
+      "stop",
+      "stream",
+      "temperature",
+      "top_p",
+      "max_tokens",
+      "max_completion_tokens"
+    ]
+  },
+  "ai21": {
+    "complete": [
+      "prompt",
+      "n",
+      "max_tokens",
+      "minTokens",
+      "temperature",
+      "top_p",
+      "top_k",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "countPenalty",
+      "frequencyPenalty",
+      "presencePenalty"
+    ],
+    "chatComplete": [
+      "messages",
+      "n",
+      "max_tokens",
+      "max_completion_tokens",
+      "minTokens",
+      "temperature",
+      "top_p",
+      "top_k",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "countPenalty",
+      "frequencyPenalty",
+      "presencePenalty"
+    ],
+    "embed": ["input", "type"]
+  },
+  "bedrock": {
+    "getConfig": []
+  },
+  "groq": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "stream",
+      "stop",
+      "n"
+    ]
+  },
+  "segmind": {
+    "imageGenerate": [
+      "prompt",
+      "n",
+      "size",
+      "style",
+      "steps",
+      "negative_prompt",
+      "scheduler",
+      "guidance_scale",
+      "seed",
+      "strength",
+      "refiner",
+      "high_noise_fraction",
+      "base64",
+      "control_scale",
+      "control_start",
+      "control_end",
+      "qr_text",
+      "invert",
+      "qr_size"
+    ]
+  },
+  "jina": {
+    "embed": ["model", "input", "encoding_format"]
+  },
+  "fireworks-ai": {
+    "complete": [
+      "model",
+      "prompt",
+      "max_tokens",
+      "logprobs",
+      "echo",
+      "temperature",
+      "top_p",
+      "top_k",
+      "frequency_penalty",
+      "presence_penalty",
+      "n",
+      "stop",
+      "response_format",
+      "stream",
+      "context_length_exceeded_behavior",
+      "user"
+    ],
+    "chatComplete": [
+      "model",
+      "messages",
+      "tools",
+      "max_tokens",
+      "max_completion_tokens",
+      "prompt_truncate_len",
+      "temperature",
+      "top_p",
+      "top_k",
+      "frequency_penalty",
+      "presence_penalty",
+      "n",
+      "stop",
+      "response_format",
+      "stream",
+      "context_length_exceeded_behavior",
+      "user"
+    ],
+    "embed": ["model", "input", "dimensions"],
+    "imageGenerate": [
+      "prompt",
+      "model",
+      "size",
+      "cfg_scale",
+      "sampler",
+      "n",
+      "seed",
+      "steps",
+      "safety_check",
+      "lora_adapter_name",
+      "lora_weight_filename"
+    ]
+  },
+  "workers-ai": {
+    "complete": ["prompt", "stream", "raw", "max_tokens"],
+    "chatComplete": [
+      "messages",
+      "stream",
+      "raw",
+      "max_tokens",
+      "max_completion_tokens"
+    ],
+    "embed": ["input"]
+  },
+  "reka-ai": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "stop",
+      "seed",
+      "frequency_penalty",
+      "presence_penalty",
+      "top_k",
+      "length_penalty",
+      "retrieval_dataset",
+      "use_search_engine"
+    ]
+  },
+  "moonshot": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "stream"
+    ]
+  },
+  "openrouter": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "stream"
+    ]
+  },
+  "lingyi": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "stream"
+    ]
+  },
+  "zhipu": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "stream"
+    ],
+    "embed": ["model", "input"]
+  },
+  "novita-ai": {
+    "complete": [
+      "model",
+      "prompt",
+      "max_tokens",
+      "stop",
+      "temperature",
+      "top_p",
+      "top_k",
+      "frequency_penalty",
+      "stream",
+      "logprobs"
+    ],
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "max_completion_tokens",
+      "stop",
+      "temperature",
+      "top_p",
+      "n",
+      "top_k",
+      "presence_penalty",
+      "frequency_penalty",
+      "stream",
+      "logprobs",
+      "tools",
+      "tool_choice",
+      "response_format"
+    ]
+  },
+  "monsterapi": {
+    "chatComplete": [
+      "top_k",
+      "top_p",
+      "temperature",
+      "max_length",
+      "repetition_penalty",
+      "beam_size",
+      "model",
+      "messages"
+    ]
+  },
+  "deepseek": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "stream",
+      "frequency_penalty",
+      "presence_penalty",
+      "stop",
+      "logprobs",
+      "top_logprobs"
+    ]
+  },
+  "predibase": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "response_format",
+      "stream",
+      "n",
+      "stop",
+      "top_k",
+      "best_of"
+    ]
+  },
+  "triton": {
+    "complete": [
+      "prompt",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "top_k",
+      "stop",
+      "bad_words"
+    ]
+  },
+  "voyage": {
+    "embed": ["model", "input", "input_type", "truncation", "encoding_format"]
+  },
+  "azure-ai": {
+    "complete": [
+      "model",
+      "prompt",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "stream",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "user"
+    ],
+    "embed": ["model", "input", "user"],
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "stream",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "user",
+      "tools",
+      "tool_choice",
+      "response_format"
+    ]
+  },
+  "github": {
+    "complete": [
+      "model",
+      "prompt",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "stream",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "user"
+    ],
+    "embed": ["model", "input", "user"],
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "stream",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "user",
+      "tools",
+      "tool_choice",
+      "response_format"
+    ]
+  },
+  "deepbricks": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "functions",
+      "function_call",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "n",
+      "stream",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty",
+      "logit_bias",
+      "user",
+      "seed",
+      "tools",
+      "tool_choice",
+      "response_format",
+      "logprobs",
+      "top_logprobs",
+      "stream_options"
+    ],
+    "imageGenerate": [
+      "prompt",
+      "model",
+      "n",
+      "quality",
+      "response_format",
+      "size",
+      "style",
+      "user"
+    ]
+  },
+  "siliconflow": {
+    "embed": ["model", "input", "encoding_format"],
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "max_completion_tokens",
+      "temperature",
+      "top_p",
+      "n",
+      "stream",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty"
+    ],
+    "imageGenerate": [
+      "prompt",
+      "size",
+      "num_inference_steps",
+      "batch_size",
+      "guidance_scale"
+    ]
+  },
+  "cerebras": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "functions",
+      "function_call",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "n",
+      "stream",
+      "user",
+      "seed",
+      "tools",
+      "tool_choice",
+      "response_format",
+      "stream_options"
+    ]
+  },
+  "inference-net": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "functions",
+      "function_call",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "n",
+      "stream",
+      "presence_penalty",
+      "frequency_penalty",
+      "logit_bias",
+      "user",
+      "seed",
+      "tools",
+      "tool_choice",
+      "response_format",
+      "logprobs",
+      "stream_options"
+    ]
+  },
+  "sambanova": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "n",
+      "stream",
+      "stream_options"
+    ]
+  },
+  "upstage": {
+    "chatComplete": [
+      "model",
+      "messages",
+      "functions",
+      "function_call",
+      "max_tokens",
+      "temperature",
+      "top_p",
+      "n",
+      "stream",
+      "presence_penalty",
+      "frequency_penalty",
+      "logit_bias",
+      "user",
+      "seed",
+      "tools",
+      "tool_choice",
+      "response_format",
+      "logprobs",
+      "stream_options"
+    ],
+    "embed": ["model", "input", "encoding_format", "dimensions", "user"]
+  }
+}
