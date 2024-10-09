@@ -7,6 +7,7 @@
 import { Hono } from 'hono';
 import { prettyJSON } from 'hono/pretty-json';
 import { HTTPException } from 'hono/http-exception';
+import { upgradeWebSocket } from 'hono/cloudflare-workers';
 // import { env } from 'hono/adapter' // Have to set this up for multi-environment deployment
 
 import { completeHandler } from './handlers/completeHandler';
@@ -165,6 +166,27 @@ app.post('/v1/prompts/*', requestValidator, (c) => {
   });
 });
 
+// WebSocket route
+
+// app.get(
+//   '/ws',
+//   upgradeWebSocket((c) => {
+//     return {
+//       onMessage(event, ws) {
+//         console.log(`Message from client: ${event.data}`);
+//         ws.send('Hello from server!');
+//       },
+//       onClose: () => {
+//         console.log('Connection closed')
+//       },
+//       onOpen(evt, ws) {
+//         ws.send('Connection opened!');
+//         console.log('Connection opened');
+//       },
+//     }
+//   })
+// )
+
 /**
  * @deprecated
  * Support the /v1 proxy endpoint
@@ -175,7 +197,7 @@ app.post('/v1/proxy/*', proxyHandler);
 app.post('/v1/*', requestValidator, proxyHandler);
 
 // Support the /v1 proxy endpoint after all defined endpoints so this does not interfere.
-app.get('/v1/*', requestValidator, proxyGetHandler);
+app.get('/v1/(?!realtime).*', requestValidator, proxyGetHandler);
 
 app.delete('/v1/*', requestValidator, proxyGetHandler);
 

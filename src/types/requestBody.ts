@@ -90,6 +90,7 @@ export interface Options {
   /** OpenAI specific */
   openaiProject?: string;
   openaiOrganization?: string;
+  openaiBeta?: string;
 
   /** Azure Inference Specific */
   azureRegion?: string;

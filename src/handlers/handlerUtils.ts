@@ -1036,6 +1036,7 @@ export function constructConfigFromRequestHeaders(
   const openAiConfig = {
     openaiOrganization: requestHeaders[`x-${POWERED_BY}-openai-organization`],
     openaiProject: requestHeaders[`x-${POWERED_BY}-openai-project`],
+    openaiBeta: requestHeaders[`x-${POWERED_BY}-openai-beta`],
   };
 
   const huggingfaceConfig = {
