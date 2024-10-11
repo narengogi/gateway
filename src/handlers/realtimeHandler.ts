@@ -1,16 +1,29 @@
 import { Context } from 'hono';
 import { WSContext, WSEvents } from 'hono/ws';
 import { constructConfigFromRequestHeaders } from './handlerUtils';
-import { hc } from 'hono/client';
-import app from '..';
-import { Client } from 'hono/dist/types/client/types';
-import WebSocket from 'ws';
+// import WebSocket from 'ws';
 import { ProviderAPIConfig } from '../providers/types';
 import Providers from '../providers';
 import { Options } from '../types/requestBody';
 
-export async function realTimeHandler(c: Context): Promise<WSEvents<unknown>> {
-  let serverWebSocket: WSContext<unknown> | null = null;
+const getOutgoingWebSocket = async (url: string, options: RequestInit) => {
+  let outgoingWebSocket: WebSocket | null = null;
+  try {
+    let response = await fetch(url, options);
+    outgoingWebSocket = response.webSocket;
+  } catch (error) {
+    console.log(error);
+  }
+
+  if (!outgoingWebSocket) {
+    throw new Error('WebSocket connection failed');
+  }
+
+  outgoingWebSocket.accept();
+  return outgoingWebSocket;
+};
+
+export async function realTimeHandler(c: Context): Promise<Response> {
   let requestHeaders = Object.fromEntries(c.req.raw.headers);
   const camelCaseConfig = constructConfigFromRequestHeaders(requestHeaders);
 
@@ -31,52 +44,49 @@ export async function realTimeHandler(c: Context): Promise<WSEvents<unknown>> {
     transformedRequestBody: {},
   });
 
-  // const requestOptions = c.get('requestOptions') || [];
+  const webSocketPair = new WebSocketPair();
+  const client = webSocketPair[0];
+  const server = webSocketPair[1];
 
-  // const createRequestOption = (request:string, response:string) => {
-  //     return {
-  //         providerOptions: {
-  //             requestURL: url,
-  //             rubeusURL: 'realtime',
-  //         },
-  //         requestParams: request,
-  //         response: response,
-  //     }
-  // }
+  server.accept();
 
-  const clientWebSocket = new WebSocket(url, {
+  headers['Upgrade'] = 'websocket';
+  const options = {
     headers,
-  });
-
-  clientWebSocket.addEventListener('message', (event) => {
-    serverWebSocket?.send(event.data as string);
-  });
-
-  clientWebSocket.addEventListener('close', (event) => {
-    console.log('clientWebSocket closed', event);
-    serverWebSocket?.close();
-  });
-
-  clientWebSocket.addEventListener('error', (event) => {
-    console.log('clientWebSocket error', event);
-    serverWebSocket?.close();
-  });
-
-  return {
-    onOpen(evt, ws) {
-      serverWebSocket = ws;
-    },
-    onMessage(evt, ws) {
-      clientWebSocket.send(evt.data as string);
-    },
-    onError(evt, ws) {
-      console.log('realtimeHandler error', evt);
-      clientWebSocket?.close();
-      ws.close();
-    },
-    onClose(evt, ws) {
-      console.log('connection closed');
-      clientWebSocket?.close();
-    },
+    method: 'GET',
   };
+
+  let outgoingWebSocket: WebSocket = await getOutgoingWebSocket(url, options);
+
+  outgoingWebSocket.addEventListener('message', (event) => {
+    console.log('clientWebSocket message', event);
+    server?.send(event.data as string);
+    console.log('sent message to server');
+    client.send('message sent to server');
+  });
+
+  outgoingWebSocket.addEventListener('close', (event) => {
+    console.log('clientWebSocket closed', event);
+    server?.close();
+  });
+
+  outgoingWebSocket.addEventListener('error', (event) => {
+    console.log('clientWebSocket error', event);
+    server?.close();
+  });
+
+  server.addEventListener('message', (event) => {
+    console.log('server message', event);
+    outgoingWebSocket?.send(event.data as string);
+  });
+
+  server.addEventListener('close', (event) => {
+    console.log('server closed', event);
+    outgoingWebSocket?.close();
+  });
+
+  return new Response(null, {
+    status: 101,
+    webSocket: client,
+  });
 }

@@ -28,6 +28,7 @@ import { createSpeechHandler } from './handlers/createSpeechHandler';
 import conf from '../conf.json';
 import { createTranscriptionHandler } from './handlers/createTranscriptionHandler';
 import { createTranslationHandler } from './handlers/createTranslationHandler';
+import { realTimeHandler } from './handlers/realtimeHandler';
 
 // Create a new Hono server instance
 const app = new Hono();
@@ -38,8 +39,8 @@ const app = new Hono();
  * This check if its not any of the 2 and then applies the compress middleware to avoid double compression.
  */
 
+const runtime = getRuntimeKey();
 app.use('*', (c, next) => {
-  const runtime = getRuntimeKey();
   const runtimesThatDontNeedCompression = ['lagon', 'workerd', 'node'];
   if (runtimesThatDontNeedCompression.includes(runtime)) {
     return next();
@@ -167,25 +168,9 @@ app.post('/v1/prompts/*', requestValidator, (c) => {
 });
 
 // WebSocket route
-
-// app.get(
-//   '/ws',
-//   upgradeWebSocket((c) => {
-//     return {
-//       onMessage(event, ws) {
-//         console.log(`Message from client: ${event.data}`);
-//         ws.send('Hello from server!');
-//       },
-//       onClose: () => {
-//         console.log('Connection closed')
-//       },
-//       onOpen(evt, ws) {
-//         ws.send('Connection opened!');
-//         console.log('Connection opened');
-//       },
-//     }
-//   })
-// )
+if (runtime === 'workerd') {
+  app.get('/v1/realtime', realTimeHandler);
+}
 
 /**
  * @deprecated

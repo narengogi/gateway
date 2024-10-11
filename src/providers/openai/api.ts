@@ -4,7 +4,7 @@ const OpenAIAPIConfig: ProviderAPIConfig = {
   getBaseURL: ({ providerOptions }) => {
     const { openaiBeta } = providerOptions;
     if (openaiBeta) {
-      return `wss://api.openai.com/v1`;
+      return `https://api.openai.com/v1`;
     }
     return 'https://api.openai.com/v1';
   },
