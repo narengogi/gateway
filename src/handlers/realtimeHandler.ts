@@ -23,6 +23,72 @@ const getOutgoingWebSocket = async (url: string, options: RequestInit) => {
   return outgoingWebSocket;
 };
 
+const addListeners = (
+  outgoingWebSocket: WebSocket,
+  server: WebSocket,
+  c: Context,
+  url: string
+) => {
+  const requestOptions = c.get('requestOptions') || [];
+  let currentResponse = '';
+
+  outgoingWebSocket.addEventListener('message', (event) => {
+    server?.send(event.data as string);
+    const data = JSON.parse(event.data as string);
+    currentResponse += data.data + '\n';
+    if (data.type === 'response.done') {
+      requestOptions[requestOptions.length - 1].response = new Response(
+        currentResponse
+      );
+      currentResponse = '';
+    }
+  });
+
+  outgoingWebSocket.addEventListener('close', (event) => {
+    console.log('clientWebSocket closed', event);
+    server?.close();
+  });
+
+  outgoingWebSocket.addEventListener('error', (event) => {
+    console.log('clientWebSocket error', event);
+    server?.close();
+  });
+
+  server.addEventListener('message', (event) => {
+    outgoingWebSocket?.send(event.data as string);
+    const requestOption = createRequestOption(
+      url,
+      event.data as Record<string, any>,
+      ''
+    );
+    requestOptions.push(requestOption);
+  });
+
+  server.addEventListener('close', async (event) => {
+    console.log('server closed');
+    outgoingWebSocket?.close();
+    c.set('requestOptions', requestOptions);
+    const responseText = await requestOptions[0].response.text();
+    console.log('responseText', responseText);
+  });
+};
+
+const createRequestOption = (
+  url: string,
+  request: { [key: string]: any },
+  response: string
+) => {
+  const responseObject = new Response(response);
+  return {
+    providerOptions: {
+      requestURL: url,
+      rubeusURL: 'realtime',
+    },
+    requestParams: request,
+    response: responseObject,
+  };
+};
+
 export async function realTimeHandler(c: Context): Promise<Response> {
   let requestHeaders = Object.fromEntries(c.req.raw.headers);
   const camelCaseConfig = constructConfigFromRequestHeaders(requestHeaders);
@@ -58,28 +124,7 @@ export async function realTimeHandler(c: Context): Promise<Response> {
 
   let outgoingWebSocket: WebSocket = await getOutgoingWebSocket(url, options);
 
-  outgoingWebSocket.addEventListener('message', (event) => {
-    server?.send(event.data as string);
-  });
-
-  outgoingWebSocket.addEventListener('close', (event) => {
-    console.log('clientWebSocket closed', event);
-    server?.close();
-  });
-
-  outgoingWebSocket.addEventListener('error', (event) => {
-    console.log('clientWebSocket error', event);
-    server?.close();
-  });
-
-  server.addEventListener('message', (event) => {
-    outgoingWebSocket?.send(event.data as string);
-  });
-
-  server.addEventListener('close', (event) => {
-    console.log('server closed', event);
-    outgoingWebSocket?.close();
-  });
+  addListeners(outgoingWebSocket, server, c, url);
 
   return new Response(null, {
     status: 101,
