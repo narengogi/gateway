@@ -59,10 +59,7 @@ export async function realTimeHandler(c: Context): Promise<Response> {
   let outgoingWebSocket: WebSocket = await getOutgoingWebSocket(url, options);
 
   outgoingWebSocket.addEventListener('message', (event) => {
-    console.log('clientWebSocket message', event);
     server?.send(event.data as string);
-    console.log('sent message to server');
-    client.send('message sent to server');
   });
 
   outgoingWebSocket.addEventListener('close', (event) => {
@@ -76,7 +73,6 @@ export async function realTimeHandler(c: Context): Promise<Response> {
   });
 
   server.addEventListener('message', (event) => {
-    console.log('server message', event);
     outgoingWebSocket?.send(event.data as string);
   });
 
