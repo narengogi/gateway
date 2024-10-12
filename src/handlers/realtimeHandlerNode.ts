@@ -8,11 +8,16 @@ import WebSocket from 'ws';
 import { ProviderAPIConfig } from '../providers/types';
 import Providers from '../providers';
 import { Options } from '../types/requestBody';
+import { createRequestOption } from './tempUtils';
 
 export async function realTimeHandlerNode(
   c: Context
 ): Promise<WSEvents<unknown>> {
-  let serverWebSocket: WSContext<unknown> | null = null;
+  let incomingWebsocket: WSContext<unknown> | null = null;
+  const requestOptions = c.get('requestOptions') || [];
+  let requestMessages: string[] = [];
+  let responseMessages: string[] = [];
+  let currentConversationIndex = requestOptions[requestOptions.length - 1];
   let requestHeaders = Object.fromEntries(c.req.raw.headers);
   const camelCaseConfig = constructConfigFromRequestHeaders(requestHeaders);
 
@@ -34,52 +39,61 @@ export async function realTimeHandlerNode(
     transformedRequestBody: {},
   });
 
-  // const requestOptions = c.get('requestOptions') || [];
-
-  // const createRequestOption = (request:string, response:string) => {
-  //     return {
-  //         providerOptions: {
-  //             requestURL: url,
-  //             rubeusURL: 'realtime',
-  //         },
-  //         requestParams: request,
-  //         response: response,
-  //     }
-  // }
-
-  const clientWebSocket = new WebSocket(url, {
+  const outgoingWebSocket = new WebSocket(url, {
     headers,
   });
 
-  clientWebSocket.addEventListener('message', (event) => {
-    serverWebSocket?.send(event.data as string);
+  outgoingWebSocket.addEventListener('message', (event) => {
+    incomingWebsocket?.send(event.data as string);
+    responseMessages.push(event.data as string);
+    const parsedData = JSON.parse(event.data as string);
+    if (parsedData.type === 'response.done') {
+      requestOptions[currentConversationIndex].response = new Response(
+        responseMessages.join('\n')
+      );
+      currentConversationIndex++;
+      responseMessages = [];
+    }
   });
 
-  clientWebSocket.addEventListener('close', (event) => {
+  outgoingWebSocket.addEventListener('close', (event) => {
     console.log('clientWebSocket closed', event);
-    serverWebSocket?.close();
+    incomingWebsocket?.close();
   });
 
-  clientWebSocket.addEventListener('error', (event) => {
+  outgoingWebSocket.addEventListener('error', (event) => {
     console.log('clientWebSocket error', event);
-    serverWebSocket?.close();
+    incomingWebsocket?.close();
   });
 
   return {
     onOpen(evt, ws) {
-      serverWebSocket = ws;
+      incomingWebsocket = ws;
     },
-    onMessage(evt, ws) {
-      clientWebSocket.send(evt.data as string);
+    onMessage(event, ws) {
+      outgoingWebSocket?.send(event.data as string);
+      const parsedData = JSON.parse(event.data as string);
+      requestMessages.push(parsedData.data);
+      if (parsedData.type === 'response.create') {
+        requestOptions.push(createRequestOption(url, requestMessages, []));
+        requestMessages = [];
+      }
     },
     onError(evt, ws) {
       console.log('realtimeHandler error', evt);
-      clientWebSocket?.close();
-      ws.close();
+      outgoingWebSocket?.close();
     },
     onClose(evt, ws) {
-      console.log('connection closed');
-      clientWebSocket?.close();
+      outgoingWebSocket?.close();
+      if (requestMessages.length > 0) {
+        let requestOption = createRequestOption(
+          url,
+          requestMessages,
+          responseMessages
+        );
+        requestOptions.push(requestOption);
+      }
+      c.set('requestOptions', requestOptions);
     },
   };
 }
