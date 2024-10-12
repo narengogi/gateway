@@ -1,7 +1,6 @@
 import { Context } from 'hono';
 import { WSContext, WSEvents } from 'hono/ws';
 import { constructConfigFromRequestHeaders } from './handlerUtils';
-// import WebSocket from 'ws';
 import { ProviderAPIConfig } from '../providers/types';
 import Providers from '../providers';
 import { Options } from '../types/requestBody';
@@ -30,22 +29,24 @@ const addListeners = (
   url: string
 ) => {
   const requestOptions = c.get('requestOptions') || [];
-  let currentResponse = '';
+  let requestMessages: string[] = [];
+  let responseMessages: string[] = [];
+  let currentConversationIndex = requestOptions[requestOptions.length - 1];
 
   outgoingWebSocket.addEventListener('message', (event) => {
     server?.send(event.data as string);
-    const data = JSON.parse(event.data as string);
-    currentResponse += data.data + '\n';
-    if (data.type === 'response.done') {
-      requestOptions[requestOptions.length - 1].response = new Response(
-        currentResponse
+    responseMessages.push(event.data as string);
+    const parsedData = JSON.parse(event.data as string);
+    if (parsedData.type === 'response.done') {
+      requestOptions[currentConversationIndex].response = new Response(
+        responseMessages.join('\n')
       );
-      currentResponse = '';
+      currentConversationIndex++;
+      responseMessages = [];
     }
   });
 
   outgoingWebSocket.addEventListener('close', (event) => {
-    console.log('clientWebSocket closed', event);
     server?.close();
   });
 
@@ -56,71 +57,105 @@ const addListeners = (
 
   server.addEventListener('message', (event) => {
     outgoingWebSocket?.send(event.data as string);
-    const requestOption = createRequestOption(
-      url,
-      event.data as Record<string, any>,
-      ''
-    );
-    requestOptions.push(requestOption);
+    const parsedData = JSON.parse(event.data as string);
+    requestMessages.push(parsedData.data);
+    if (parsedData.type === 'response.create') {
+      requestOptions.push(createRequestOption(url, requestMessages, []));
+      requestMessages = [];
+    }
   });
 
-  server.addEventListener('close', async (event) => {
-    console.log('server closed');
+  server.addEventListener('close', (event) => {
     outgoingWebSocket?.close();
+    if (requestMessages.length > 0) {
+      let requestOption = createRequestOption(
+        url,
+        requestMessages,
+        responseMessages
+      );
+      requestOptions.push(requestOption);
+    }
     c.set('requestOptions', requestOptions);
-    const responseText = await requestOptions[0].response.text();
-    console.log('responseText', responseText);
   });
 };
 
 const createRequestOption = (
   url: string,
-  request: { [key: string]: any },
-  response: string
+  requestMessages: string[],
+  responseMessages: string[]
 ) => {
-  const responseObject = new Response(response);
+  const responseObject =
+    responseMessages.length > 0
+      ? new Response(responseMessages.join('\n'))
+      : null;
   return {
     providerOptions: {
       requestURL: url,
       rubeusURL: 'realtime',
     },
-    requestParams: request,
+    requestParams: { messages: requestMessages },
     response: responseObject,
   };
 };
 
-export async function realTimeHandler(c: Context): Promise<Response> {
-  let requestHeaders = Object.fromEntries(c.req.raw.headers);
-  const camelCaseConfig = constructConfigFromRequestHeaders(requestHeaders);
-
-  const provider = camelCaseConfig?.provider ?? '';
-  const apiConfig: ProviderAPIConfig = Providers[provider].api;
-  const providerOptions = camelCaseConfig as Options;
-  const baseUrl = apiConfig.getBaseURL({ providerOptions });
-  const endpoint = apiConfig.getEndpoint({
-    providerOptions,
-    fn: 'realtime',
-    gatewayRequestBody: {},
-  });
-  const url = `${baseUrl}${endpoint}`;
+const getOptionsForOutgoingConnection = async (
+  apiConfig: ProviderAPIConfig,
+  providerOptions: Options,
+  url: string
+) => {
   const headers = await apiConfig.headers({
     providerOptions,
     fn: 'realtime',
     transformedRequestUrl: url,
     transformedRequestBody: {},
   });
+  headers['Upgrade'] = 'websocket';
+  headers['Connection'] = 'Keep-Alive';
+  headers['Keep-Alive'] = 'timeout=600';
+  return {
+    headers,
+    method: 'GET',
+  };
+};
+
+const getURLForOutgoingConnection = (
+  apiConfig: ProviderAPIConfig,
+  providerOptions: Options
+) => {
+  const baseUrl = apiConfig.getBaseURL({ providerOptions });
+  const endpoint = apiConfig.getEndpoint({
+    providerOptions,
+    fn: 'realtime',
+    gatewayRequestBody: {},
+  });
+  return `${baseUrl}${endpoint}`;
+};
+
+export async function realTimeHandler(c: Context): Promise<Response> {
+  let requestHeaders = Object.fromEntries(c.req.raw.headers);
+  // move this to validator
+  const upgradeHeader = requestHeaders['Upgrade'];
+  if (!upgradeHeader || upgradeHeader !== 'websocket') {
+    return new Response('Expected Upgrade: websocket', { status: 426 });
+  }
+
+  const providerOptions = constructConfigFromRequestHeaders(
+    requestHeaders
+  ) as Options;
+  const provider = providerOptions.provider ?? '';
+  const apiConfig: ProviderAPIConfig = Providers[provider].api;
+  const url = getURLForOutgoingConnection(apiConfig, providerOptions);
+  const options = await getOptionsForOutgoingConnection(
+    apiConfig,
+    providerOptions,
+    url
+  );
 
   const webSocketPair = new WebSocketPair();
   const client = webSocketPair[0];
   const server = webSocketPair[1];
 
   server.accept();
-
-  headers['Upgrade'] = 'websocket';
-  const options = {
-    headers,
-    method: 'GET',
-  };
 
   let outgoingWebSocket: WebSocket = await getOutgoingWebSocket(url, options);
 
