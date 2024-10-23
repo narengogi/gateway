@@ -15,7 +15,7 @@ export const executeChatCompletionEndpointTests: (
   const apiKey = providerVariables.apiKey;
   if (!model || !apiKey) {
     console.warn(
-      `Skipping ${providerName} as it does not have chat completions options`
+      `Skipping ${providerName} as it does not hav chat completions options`
     );
     return;
   }
