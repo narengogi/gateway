@@ -27,6 +27,7 @@ export const executeChatCompletionEndpointTests: (
       body: getChatCompleteWithMessageStringRequest(model),
     });
     const res = await app.fetch(request);
+    console.log(res);
     expect(res.status).toBe(200);
   });
 
@@ -37,6 +38,7 @@ export const executeChatCompletionEndpointTests: (
       body: getChatCompleteWithMessageContentArraysRequest(model),
     });
     const res = await app.fetch(request);
+    console.log(res);
     expect(res.status).toBe(200);
   });
 };
