@@ -153,7 +153,7 @@ export const GoogleImageGenResponseTransform: (
 
   if ('predictions' in response) {
     return {
-      created: `${new Date().getTime()}`,
+      created: new Date().getTime(),
       data: response.predictions.map((generation) => ({
         b64_json: generation.bytesBase64Encoded,
       })),
