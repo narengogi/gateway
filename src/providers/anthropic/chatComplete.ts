@@ -292,7 +292,7 @@ export const AnthropicChatCompleteConfig: ProviderConfig = {
 
 interface AnthropicErrorObject {
   type: string;
-  message: number;
+  message: string;
 }
 
 export interface AnthropicErrorResponse {
