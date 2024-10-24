@@ -21,25 +21,24 @@ export const executeChatCompletionEndpointTests: (
   }
 
   test(`${providerName} /chat/completions test message strings`, async () => {
-    const request = new Request(CHAT_COMPLETIONS_ENDPOINT, {
+    const res = await fetch(CHAT_COMPLETIONS_ENDPOINT, {
       method: 'POST',
       headers: createDefaultHeaders(providerName, apiKey),
       body: getChatCompleteWithMessageStringRequest(model),
     });
-    const res = await app.fetch(request);
     const text = await res.text();
     console.log('response body:', text);
     expect(res.status).toEqual(200);
   });
 
   test(`${providerName} /chat/completions test message content arrays`, async () => {
-    const request = new Request(CHAT_COMPLETIONS_ENDPOINT, {
+    const res = await fetch(CHAT_COMPLETIONS_ENDPOINT, {
       method: 'POST',
       headers: createDefaultHeaders(providerName, apiKey),
       body: getChatCompleteWithMessageContentArraysRequest(model),
     });
-    const res = await app.fetch(request);
-    console.log(Number(res.status));
+    const text = await res.text();
+    console.log('response body:', text);
     expect(res.status).toEqual(200);
   });
 };
