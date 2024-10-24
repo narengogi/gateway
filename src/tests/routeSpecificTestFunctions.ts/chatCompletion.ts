@@ -27,8 +27,7 @@ export const executeChatCompletionEndpointTests: (
       body: getChatCompleteWithMessageStringRequest(model),
     });
     const res = await app.fetch(request);
-    console.log(res.status);
-    expect(res.status).toBe(200);
+    expect(res.status).toEqual(200);
   });
 
   test(`${providerName} /chat/completions test message content arrays`, async () => {
@@ -38,7 +37,6 @@ export const executeChatCompletionEndpointTests: (
       body: getChatCompleteWithMessageContentArraysRequest(model),
     });
     const res = await app.fetch(request);
-    console.log(res.status);
-    expect(res.status).toBe(200);
+    expect(res.status).toEqual(200);
   });
 };
