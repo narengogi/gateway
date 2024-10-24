@@ -27,7 +27,7 @@ export const executeChatCompletionEndpointTests: (
       body: getChatCompleteWithMessageStringRequest(model),
     });
     const res = await app.fetch(request);
-    console.log(Number(res.status));
+    console.log(await res.text());
     expect(res.status).toEqual(200);
   });
 
