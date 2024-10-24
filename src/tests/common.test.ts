@@ -7,7 +7,7 @@ for (const provider in testVariables) {
   const config = Providers[provider];
 
   if (!variables.apiKey) {
-    console.log(`Skipping ${provider} as API key is not provided`);
+    console.log(`Skipping ${provider} as APIasd key is not provided`);
     continue;
   }
 
