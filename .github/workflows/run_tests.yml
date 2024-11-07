@@ -1,4 +1,4 @@
-name: Run Gateway tests
+name: Gateway Tests
 
 on:
   issue_comment:
@@ -39,7 +39,6 @@ jobs:
             const issue_number = context.issue.number;
             
             try {
-              // Fetch the PR data
               const { data: pull_request } = await github.rest.pulls.get({
                 owner,
                 repo,
@@ -48,18 +47,17 @@ jobs:
               
               const sha = pull_request.head.sha;
               
-              // Create the check run
               await github.rest.checks.create({
                 owner,
                 repo,
-                name: 'Gateway Tests',
+                name: 'Gateway Tests (Comment Triggered)',
                 head_sha: sha,
                 status: 'completed',
                 conclusion: '${{ steps.run-tests.outcome }}',
                 output: {
                   title: 'Gateway Test Results',
                   summary: 'Gateway tests have completed.',
-                  text: 'Gateway test results: ${steps.run-tests.outcome}'
+                  text: 'These tests were triggered by a comment on the PR.'
                 },
               });
               
