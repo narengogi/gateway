@@ -224,7 +224,7 @@ export const AnthropicChatCompleteConfig: ProviderConfig = {
           if (tool.function) {
             tools.push({
               name: tool.function.name,
-              description: tool.function?.description || '',
+              description: tool.function?.description || 'sdas',
               input_schema: {
                 type: tool.function.parameters?.type || 'object',
                 properties: tool.function.parameters?.properties || {},
