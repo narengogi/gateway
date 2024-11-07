@@ -1,11 +1,12 @@
 name: Run Gateway tests
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  issue_comment:
+    types: [created]
 
 jobs:
   gateway-tests:
+    if: ${{ github.event.issue.pull_request }} && contains(github.event.comment.body, 'run tests')
     runs-on: ubuntu-latest
     environment: test
     steps:
