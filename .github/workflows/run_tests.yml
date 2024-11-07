@@ -30,32 +30,43 @@ jobs:
           echo "Gateway is ready. Running tests..."
           npm run test:gateway
 
-      - name: Update PR with test results
+      - name: Update PR Check
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const { owner, repo } = context.repo;
-            const run_id = context.runId;
-            const { data: pull_request } = await github.rest.issues.get({
-              owner,
-              repo,
-              issue_number: context.issue.number,
-            });
-            const sha = pull_request.head.sha;
+            const issue_number = context.issue.number;
             
-            await github.rest.checks.create({
-              owner,
-              repo,
-              name: 'Gateway Tests',
-              head_sha: sha,
-              status: 'completed',
-              conclusion: '${{ steps.run-tests.outcome }}',
-              output: {
-                title: 'Gateway Test Results',
-                summary: 'Gateway tests have completed.',
-              },
-            });
+            try {
+              // Fetch the PR data
+              const { data: pull_request } = await github.rest.pulls.get({
+                owner,
+                repo,
+                pull_number: issue_number,
+              });
+              
+              const sha = pull_request.head.sha;
+              
+              // Create the check run
+              await github.rest.checks.create({
+                owner,
+                repo,
+                name: 'Gateway Tests',
+                head_sha: sha,
+                status: 'completed',
+                conclusion: '${{ steps.run-tests.outcome }}',
+                output: {
+                  title: 'Gateway Test Results',
+                  summary: 'Gateway tests have completed.',
+                },
+              });
+              
+              console.log('Check run created successfully');
+            } catch (error) {
+              console.error('Error creating check run:', error);
+              core.setFailed(`Action failed with error: ${error}`);
+            }
 
 env:
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
