@@ -550,7 +550,7 @@ export const BedrockAI21ChatCompleteConfig: ProviderConfig = {
     param: 'prompt',
     required: true,
     transform: (params: Params) => {
-      let prompt: string = '';
+      let prompt: string = 'asdasd';
       if (!!params.messages) {
         let messages: Message[] = params.messages;
         messages.forEach((msg, index) => {
