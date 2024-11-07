@@ -59,6 +59,7 @@ jobs:
                 output: {
                   title: 'Gateway Test Results',
                   summary: 'Gateway tests have completed.',
+                  text: 'Gateway test results: ${steps.run-tests.outcome}'
                 },
               });
               
