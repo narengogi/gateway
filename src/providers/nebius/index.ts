@@ -21,3 +21,5 @@ export const NebiusConfig: ProviderConfigs = {
     complete: true,
   }),
 };
+
+export default NebiusConfig;
