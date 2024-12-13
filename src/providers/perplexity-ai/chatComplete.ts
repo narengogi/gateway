@@ -45,6 +45,10 @@ export const PerplexityAIChatCompleteConfig: ProviderConfig = {
     param: 'search_domain_filter',
     required: false,
   },
+  search_recency_filter: {
+    param: 'search_recency_filter',
+    required: false,
+  },
   top_k: {
     param: 'top_k',
     min: 0,
