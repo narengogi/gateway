@@ -37,6 +37,9 @@ export const FireworksAIChatCompleteConfig: ProviderConfig = {
     param: 'prompt_truncate_len',
     default: 1500,
   },
+  prompt_cache_max_len: {
+    param: 'prompt_cache_max_len',
+  },
   temperature: {
     param: 'temperature',
     default: 1,
