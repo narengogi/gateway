@@ -21,6 +21,7 @@ jobs:
       - name: Checkout public repo
         uses: actions/checkout@v4
         with:
+          path: public-repo
           fetch-depth: 0
 
       - name: Set up Git user
@@ -44,7 +45,7 @@ jobs:
             DEST=$(echo "$mapping" | jq -r '.dest')
             rm -rf "private-repo/$DEST"
             mkdir -p "private-repo/$DEST"
-            rsync -av --exclude='.git' --exclude='private-repo' "$SRC/" "private-repo/$DEST/"
+            rsync -av --exclude='.git' --exclude='private-repo' "public-repo/$SRC/" "private-repo/$DEST/"
           done
 
       - name: Create branch and push to private repo
