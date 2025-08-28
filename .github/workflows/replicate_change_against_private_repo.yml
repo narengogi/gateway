@@ -67,6 +67,7 @@ jobs:
           path: private-repo
           commit-message: "Replicate public repo changes from ${{ github.sha }}"
           branch: replicate/${{ github.sha }}
+          base: master
           title: "Replicate public repo changes from ${{ github.sha }}"
           body: |
             This PR replicates the changes from the public repo commit ${{ github.sha }}.
