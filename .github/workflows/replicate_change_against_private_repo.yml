@@ -31,7 +31,7 @@ jobs:
       - name: Clone private repo
         uses: actions/checkout@v4
         with:
-          repository: portkey-ai/test-enterprise-image
+          repository: narengogi/test-enterprise-image
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
