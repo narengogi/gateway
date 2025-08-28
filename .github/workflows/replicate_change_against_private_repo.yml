@@ -48,18 +48,6 @@ jobs:
             rsync -av --exclude='.git' --exclude='private-repo' "public-repo/$SRC/" "private-repo/$DEST/"
           done
 
-      - name: Create branch and push to private repo
-        env:
-          GITHUB_SHA: ${{ github.sha }}
-        run: |
-          cd private-repo
-          BRANCH_NAME=replicate/${GITHUB_SHA}
-          git checkout -b "$BRANCH_NAME"
-          git add .
-          git commit -m "Replicate public repo changes from $GITHUB_SHA"
-          git remote set-url origin https://x-access-token:${{ secrets.SUPPORT_GITHUB_TOKEN }}@github.com/narengogi/test-enterprise-image.git
-          git push origin "$BRANCH_NAME"
-
       - name: Create Pull Request in private repo
         uses: peter-evans/create-pull-request@v5
         with:
