@@ -24,11 +24,6 @@ jobs:
           path: public-repo
           fetch-depth: 0
 
-      - name: Set up Git user
-        run: |
-          git config --global user.name "portkey-support"
-          git config --global user.email "support@portkey.ai"
-
       - name: Clone private repo
         uses: actions/checkout@v4
         with:
