@@ -1,4 +1,4 @@
-name: Replicate change against private repo
+name: Replicate change against private repository
 
 on:
   push:
