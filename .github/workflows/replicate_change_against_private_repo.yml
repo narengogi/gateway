@@ -57,6 +57,7 @@ jobs:
           git checkout -b "$BRANCH_NAME"
           git add .
           git commit -m "Replicate public repo changes from $GITHUB_SHA"
+          git remote set-url origin https://x-access-token:${{ secrets.SUPPORT_GITHUB_TOKEN }}@github.com/narengogi/test-enterprise-image.git
           git push origin "$BRANCH_NAME"
 
       - name: Create Pull Request in private repo
