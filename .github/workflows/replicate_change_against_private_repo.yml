@@ -34,6 +34,7 @@ jobs:
           repository: narengogi/test-enterprise-image
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
+          path: private-repo
 
       - name: Copy mapped folders to private repo
         run: |
