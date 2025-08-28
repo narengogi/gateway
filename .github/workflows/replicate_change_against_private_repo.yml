@@ -1,0 +1,68 @@
+name: Replicate change against private repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  replicate-change:
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      FOLDER_MAPPINGS: |
+        [
+          {
+            "src": "src/providers", 
+            "dest": "src/providers"
+          }
+        ]
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Git user
+        run: |
+          git config --global user.name "portkey-support"
+          git config --global user.email "support@portkey.ai"
+
+      - name: Clone private repo
+        env:
+          PRIVATE_REPO_URL: ${{ secrets.PRIVATE_REPO_URL }}
+        run: |
+          git clone --depth=1 "$PRIVATE_REPO_URL" private-repo
+
+      - name: Copy mapped folders to private repo
+        run: |
+          FOLDER_MAPPINGS='${{ env.FOLDER_MAPPINGS }}'
+          echo "$FOLDER_MAPPINGS" | jq -c '.[]' | while read mapping; do
+            SRC=$(echo "$mapping" | jq -r '.src')
+            DEST=$(echo "$mapping" | jq -r '.dest')
+            rm -rf "private-repo/$DEST"
+            mkdir -p "private-repo/$DEST"
+            rsync -av --exclude='.git' --exclude='private-repo' "$SRC/" "private-repo/$DEST/"
+          done
+
+      - name: Create branch and push to private repo
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          cd private-repo
+          BRANCH_NAME=replicate/${GITHUB_SHA}
+          git checkout -b "$BRANCH_NAME"
+          git add .
+          git commit -m "Replicate public repo changes from $GITHUB_SHA"
+          git push origin "$BRANCH_NAME"
+
+      - name: Create Pull Request in private repo
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.SUPPORT_GITHUB_TOKEN }}
+          path: private-repo
+          commit-message: "Replicate public repo changes from ${{ github.sha }}"
+          branch: replicate/${{ github.sha }}
+          title: "Replicate public repo changes from ${{ github.sha }}"
+          body: |
+            This PR replicates the changes from the public repo commit ${{ github.sha }}.
