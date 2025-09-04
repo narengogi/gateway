@@ -1,9 +1,12 @@
 import fs from 'fs';
 import { Context } from 'hono';
 import { env, getRuntimeKey } from 'hono/adapter';
-import path from 'path';
 
 const isNodeInstance = getRuntimeKey() == 'node';
+let path: any;
+if (isNodeInstance) {
+  path = await import('path');
+}
 
 export function getValueOrFileContents(value?: string, ignore?: boolean) {
   if (!value || ignore) return value;
