@@ -35,11 +35,17 @@ export async function realTimeHandler(c: Context): Promise<Response> {
       requestHeaders
     ) as Options;
     const provider = providerOptions.provider ?? '';
+    const urlObject = new URL(c.req.url);
+    const model = urlObject.searchParams.get('model');
+    if (model && model.startsWith('@')) {
+      urlObject.searchParams.set('model', model.replace(/@[^/]+\//, ''));
+    }
+    const incomingUrl = urlObject.toString();
     const apiConfig: ProviderAPIConfig = Providers[provider].api;
     const url = getURLForOutgoingConnection(
       apiConfig,
       providerOptions,
-      c.req.url,
+      incomingUrl,
       c
     );
     const options = await getOptionsForOutgoingConnection(

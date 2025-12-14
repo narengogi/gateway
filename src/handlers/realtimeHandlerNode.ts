@@ -18,17 +18,23 @@ export async function realTimeHandlerNode(
     const provider = camelCaseConfig?.provider ?? '';
     const apiConfig: ProviderAPIConfig = Providers[provider].api;
     const providerOptions = camelCaseConfig as Options;
+    const urlObject = new URL(c.req.url);
+    const model = urlObject.searchParams.get('model');
+    if (model && model.startsWith('@')) {
+      urlObject.searchParams.set('model', model.replace(/@[^/]+\//, ''));
+    }
+    const incomingUrl = urlObject.toString();
     const baseUrl = apiConfig.getBaseURL({
       providerOptions,
       c,
-      gatewayRequestURL: c.req.url,
+      gatewayRequestURL: incomingUrl,
     });
     const endpoint = apiConfig.getEndpoint({
       c,
       providerOptions,
       fn: 'realtime',
       gatewayRequestBodyJSON: {},
-      gatewayRequestURL: c.req.url,
+      gatewayRequestURL: incomingUrl,
     });
     let url = `${baseUrl}${endpoint}`;
     url = url.replace('https://', 'wss://');
